@@ -19,6 +19,7 @@ kotlin {
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
+            implementation("org.bouncycastle:bcpkix-jdk18on:1.78.1")
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
