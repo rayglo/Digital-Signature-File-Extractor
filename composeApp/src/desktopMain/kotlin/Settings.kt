@@ -1,9 +1,9 @@
-import composables.NavbarViewModel
 import java.util.prefs.Preferences
 
 actual class Settings{
 
     private val preferences = Preferences.userRoot().node("extractor_settings")
+
 
     actual fun getLocale(): String? {
         return preferences.get("locale", null)

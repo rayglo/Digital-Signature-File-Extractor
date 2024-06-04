@@ -15,12 +15,15 @@ import androidx.compose.ui.unit.sp
 import de.comahe.i18n4k.Locale
 import de.comahe.i18n4k.config.I18n4kConfigDefault
 import de.comahe.i18n4k.i18n4k
+import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import p7mextractor.composeapp.generated.resources.Res
+import p7mextractor.composeapp.generated.resources.github
 
 @OptIn(ExperimentalMaterialApi::class)
 @Preview
 @Composable
-fun SettingsTab() {
+fun SettingsTab(onLocaleChange: (Locale) -> Unit = { _ -> }) {
     val options = listOf(("en" to "\uD83C\uDDEC\uD83C\uDDE7 English"), ("it" to "\uD83C\uDDEE\uD83C\uDDF9 Italian"))
     val settings = Settings()
     var isLocaleDropdownOpen by remember { mutableStateOf(false) }
@@ -46,7 +49,7 @@ fun SettingsTab() {
             fontSize = 20.sp
         )
 
-        Box(modifier = Modifier.fillMaxWidth().padding(32.dp, 0.dp)) {
+        Box(modifier = Modifier.fillMaxSize().weight(1f)) {
             ExposedDropdownMenuBox(
                 expanded = isLocaleDropdownOpen,
                 onExpandedChange = { isLocaleDropdownOpen = it },
@@ -71,9 +74,11 @@ fun SettingsTab() {
                             onClick = {
                                 isLocaleDropdownOpen = false
                                 settings.setLocale(value)
-                                i18n4k = I18n4kConfigDefault().apply {
+                                val newConfig = I18n4kConfigDefault().apply {
                                     locale = Locale(value)
                                 }
+                                i18n4k = newConfig
+                                onLocaleChange(Locale(value))
                             }
                         ) {
                             Text(label)
@@ -82,5 +87,25 @@ fun SettingsTab() {
                 }
             }
         }
+
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.End,
+            verticalAlignment = Alignment.Bottom
+        ) {
+            IconButton(
+                onClick = {
+                val url = "https://bit.ly/4c8EQIj"
+                java.awt.Desktop.getDesktop().browse(java.net.URI(url))
+            }){
+                Icon(
+                    painter = painterResource(Res.drawable.github),
+                    contentDescription = "GitHub",
+                    modifier = Modifier.size(24.dp),
+                    tint = MaterialTheme.colors.primary
+                )
+            }
+        }
+
     }
 }
