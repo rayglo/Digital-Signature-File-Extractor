@@ -20,11 +20,11 @@ fun App() {
                 TabRow(selectedTabIndex = openedTab, tabs = {
                     Tab(selected = openedTab == 0,
                         onClick = { openedTab = 0 },
-                        text = { Text("Extract file") })
+                        text = { Text("Extract DS file") })
                     Tab(
                         selected = openedTab == 1,
                         onClick = { openedTab = 1 },
-                        text = { Text("Extract folder") })
+                        text = { Text("Extract DS folder") })
                     Tab(
                         selected = openedTab == 2,
                         onClick = { openedTab = 2 },

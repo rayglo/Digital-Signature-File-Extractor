@@ -1,6 +1,7 @@
 package composables
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.AlertDialog
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
@@ -27,6 +28,8 @@ fun ExtractFileTab() {
     var selectedFilePath by remember { mutableStateOf<String?>(null) }
     var destinationFolderPath by remember { mutableStateOf<String?>(null) }
 
+    var showSuccessDialog by remember { mutableStateOf(false) }
+
     Column(
         verticalArrangement = Arrangement.spacedBy(36.dp),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -34,7 +37,7 @@ fun ExtractFileTab() {
         Text(
             modifier = Modifier.fillMaxWidth(),
             textAlign = TextAlign.Center,
-            text = "Extract file",
+            text = "Extract Digitally Signed file",
             textDecoration = Underline,
             fontSize = 24.sp
         )
@@ -63,11 +66,12 @@ fun ExtractFileTab() {
                 onClick = { isSingleFilePickerOpen = true }) {
                 Text(
                     textAlign = TextAlign.Center,
-                    text = "Select a file")
+                    text = "Select a file"
+                )
             }
             FilePicker(isSingleFilePickerOpen, fileExtensions = listOf("p7m")) {
                 isSingleFilePickerOpen = false
-                if(it?.platformFile as File? != null) {
+                if (it?.platformFile as File? != null) {
                     selectedFilePath = ((it?.platformFile as File).absolutePath)
                 }
                 println("Selected file: $it")
@@ -98,12 +102,13 @@ fun ExtractFileTab() {
                 onClick = { isFolderFilePickerOpen = true }) {
                 Text(
                     textAlign = TextAlign.Center,
-                    text = "Select a folder")
+                    text = "Select a folder"
+                )
             }
 
             DirectoryPicker(isFolderFilePickerOpen) {
                 isFolderFilePickerOpen = false
-                if(it != null) {
+                if (it != null) {
                     destinationFolderPath = it
                 }
                 println("Selected folder: $it")
@@ -117,12 +122,30 @@ fun ExtractFileTab() {
                 println("Extracting file: $selectedFilePath to folder: $destinationFolderPath")
                 val file = File(selectedFilePath!!)
                 val extractedFile = p7mExtractor.extract(file, File(destinationFolderPath!!))
+                assert(extractedFile != null)
                 println("Extracted file: $extractedFile")
+                showSuccessDialog = true
             }) {
             Text(
                 textAlign = TextAlign.Center,
                 text = "Extract file"
             )
+        }
+
+        when {
+            showSuccessDialog -> {
+                AlertDialog(
+                    onDismissRequest = { showSuccessDialog = false },
+                    title = { Text("File extracted successfully") },
+                    text = { Text("The file has been extracted successfully") },
+                    confirmButton = {
+                        Button(
+                            onClick = { showSuccessDialog = false }) {
+                            Text("OK")
+                        }
+                    }
+                )
+            }
         }
     }
 }

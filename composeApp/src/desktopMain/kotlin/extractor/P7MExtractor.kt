@@ -13,7 +13,7 @@ import java.nio.file.Paths
 class P7MExtractor() : Extractor() {
 
 
-    override fun extract(file: File, destination: File?): File {
+    override fun extract(file: File, destination: File?): File? {
         var newFileName = file.name
         val totalSignatures: Int
         var countSignatures = 0
