@@ -20,6 +20,7 @@ kotlin {
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
             implementation("org.bouncycastle:bcpkix-jdk18on:1.78.1")
+            implementation("com.darkrockstudios:mpfilepicker:3.1.0")
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
