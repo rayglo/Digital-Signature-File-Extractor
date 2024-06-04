@@ -12,7 +12,6 @@ import java.nio.file.Paths
 
 class P7MExtractor() : Extractor() {
 
-
     override fun extract(file: File, destination: File?): File? {
         var newFileName = file.name
         val totalSignatures: Int
@@ -38,9 +37,6 @@ class P7MExtractor() : Extractor() {
         if (totalSignatures == 0) {
             throw NotValidP7MFileNameException("The file name is not valid for a p7m file: no .p7m extension found (${file.name})")
         }
-
-
-
 
         var p7mContent = Files.readAllBytes(Paths.get(file.absolutePath))
 

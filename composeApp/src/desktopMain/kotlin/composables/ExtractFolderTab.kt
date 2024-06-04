@@ -1,5 +1,6 @@
 package composables
 
+import MyMessages
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.AlertDialog
 import androidx.compose.material.Button
@@ -36,7 +37,7 @@ fun ExtractFolderTab() {
         Text(
             modifier = Modifier.fillMaxWidth(),
             textAlign = TextAlign.Center,
-            text = "Extract Digitally Signed folder",
+            text = MyMessages.extract_digitally_signed_folder.toString(),
             textDecoration = Underline,
             fontSize = 24.sp
         )
@@ -44,7 +45,7 @@ fun ExtractFolderTab() {
         Text(
             modifier = Modifier.fillMaxWidth(),
             textAlign = TextAlign.Center,
-            text = "Source folder",
+            text = MyMessages.source_folder.toString(),
             fontSize = 20.sp
         )
 
@@ -54,10 +55,10 @@ fun ExtractFolderTab() {
             modifier = Modifier.fillMaxWidth()
         ) {
             TextField(
-                modifier = Modifier.weight(7f),
+                modifier = Modifier.weight(6f),
                 value = selectedSourcePath ?: "",
                 onValueChange = { selectedDestinationPath = it },
-                label = { Text("Select a source folder") },
+                label = { Text(MyMessages.select_a_source_folder.toString()) },
                 singleLine = true
             )
             Button(
@@ -65,7 +66,7 @@ fun ExtractFolderTab() {
                 onClick = { isSourceFolderPickerOpen = true }) {
                 Text(
                     textAlign = TextAlign.Center,
-                    text = "Select a folder"
+                    text = MyMessages.select_a_folder.toString()
                 )
             }
             DirectoryPicker(isSourceFolderPickerOpen) {
@@ -80,7 +81,7 @@ fun ExtractFolderTab() {
         Text(
             modifier = Modifier.fillMaxWidth(),
             textAlign = TextAlign.Center,
-            text = "Destination folder",
+            text = MyMessages.destination_folder.toString(),
             fontSize = 20.sp
         )
 
@@ -90,10 +91,10 @@ fun ExtractFolderTab() {
             modifier = Modifier.fillMaxWidth()
         ) {
             TextField(
-                modifier = Modifier.weight(7f),
+                modifier = Modifier.weight(6f),
                 value = selectedDestinationPath ?: "",
                 onValueChange = { selectedDestinationPath = it },
-                label = { Text("Select a destination folder") },
+                label = { Text(MyMessages.select_a_destination_folder.toString()) },
                 singleLine = true
             )
             Button(
@@ -101,7 +102,7 @@ fun ExtractFolderTab() {
                 onClick = { isDestinationFolderPickerOpen = true }) {
                 Text(
                     textAlign = TextAlign.Center,
-                    text = "Select a folder"
+                    text = MyMessages.select_a_folder.toString()
                 )
             }
 
@@ -130,7 +131,7 @@ fun ExtractFolderTab() {
             }) {
             Text(
                 textAlign = TextAlign.Center,
-                text = "Extract file"
+                text = MyMessages.extract_folder.toString()
             )
         }
 
@@ -138,16 +139,17 @@ fun ExtractFolderTab() {
             showSuccessDialog -> {
                 AlertDialog(
                     onDismissRequest = { showSuccessDialog = false },
-                    title = { Text("File(s) extracted successfully") },
-                    text = { Text("The file(s) have been extracted successfully") },
+                    title = { Text(MyMessages.folder_extracted_successfully.toString()) },
+                    text = { Text(MyMessages.folder_extracted_successfully_desc.toString()) },
                     confirmButton = {
                         Button(
                             onClick = { showSuccessDialog = false }) {
-                            Text("OK")
+                            Text(MyMessages.ok.toString())
                         }
                     }
                 )
             }
         }
     }
+
 }

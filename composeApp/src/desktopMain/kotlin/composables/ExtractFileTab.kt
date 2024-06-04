@@ -37,7 +37,7 @@ fun ExtractFileTab() {
         Text(
             modifier = Modifier.fillMaxWidth(),
             textAlign = TextAlign.Center,
-            text = "Extract Digitally Signed file",
+            text = MyMessages.extract_digitally_signed_file.toString(),
             textDecoration = Underline,
             fontSize = 24.sp
         )
@@ -45,7 +45,7 @@ fun ExtractFileTab() {
         Text(
             modifier = Modifier.fillMaxWidth(),
             textAlign = TextAlign.Center,
-            text = "Select a file to extract",
+            text = MyMessages.select_a_file_to_extract.toString(),
             fontSize = 20.sp
         )
 
@@ -55,10 +55,10 @@ fun ExtractFileTab() {
             modifier = Modifier.fillMaxWidth()
         ) {
             TextField(
-                modifier = Modifier.weight(7f),
+                modifier = Modifier.weight(6f),
                 value = selectedFilePath ?: "",
                 onValueChange = { selectedFilePath = it },
-                label = { Text("Select a file") },
+                label = { Text(MyMessages.select_a_file.toString()) },
                 singleLine = true
             )
             Button(
@@ -66,7 +66,7 @@ fun ExtractFileTab() {
                 onClick = { isSingleFilePickerOpen = true }) {
                 Text(
                     textAlign = TextAlign.Center,
-                    text = "Select a file"
+                    text = MyMessages.select_a_file.toString()
                 )
             }
             FilePicker(isSingleFilePickerOpen, fileExtensions = listOf("p7m")) {
@@ -81,7 +81,7 @@ fun ExtractFileTab() {
         Text(
             modifier = Modifier.fillMaxWidth(),
             textAlign = TextAlign.Center,
-            text = "Destination folder",
+            text = MyMessages.destination_folder.toString(),
             fontSize = 20.sp
         )
 
@@ -91,10 +91,10 @@ fun ExtractFileTab() {
             modifier = Modifier.fillMaxWidth()
         ) {
             TextField(
-                modifier = Modifier.weight(7f),
+                modifier = Modifier.weight(6f),
                 value = destinationFolderPath ?: "",
                 onValueChange = { destinationFolderPath = it },
-                label = { Text("Select a destination folder") },
+                label = { Text(MyMessages.select_a_destination_folder.toString()) },
                 singleLine = true
             )
             Button(
@@ -102,7 +102,7 @@ fun ExtractFileTab() {
                 onClick = { isFolderFilePickerOpen = true }) {
                 Text(
                     textAlign = TextAlign.Center,
-                    text = "Select a folder"
+                    text = MyMessages.select_a_folder.toString()
                 )
             }
 
@@ -128,7 +128,7 @@ fun ExtractFileTab() {
             }) {
             Text(
                 textAlign = TextAlign.Center,
-                text = "Extract file"
+                text = MyMessages.extract_file.toString()
             )
         }
 
@@ -136,12 +136,12 @@ fun ExtractFileTab() {
             showSuccessDialog -> {
                 AlertDialog(
                     onDismissRequest = { showSuccessDialog = false },
-                    title = { Text("File extracted successfully") },
-                    text = { Text("The file has been extracted successfully") },
+                    title = { Text(MyMessages.file_extracted_successfully.toString()) },
+                    text = { Text(MyMessages.file_extracted_successfully_desc.toString()) },
                     confirmButton = {
                         Button(
                             onClick = { showSuccessDialog = false }) {
-                            Text("OK")
+                            Text(MyMessages.ok.toString())
                         }
                     }
                 )
