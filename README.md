@@ -2,6 +2,10 @@
 
 A really simple to use tool to extract files from a digital signature file.
 
+### Disclaimer
+
+This tool is in development and it's not ready for production use. Use it at your own risk.
+
 ### Features
 
 - Extract a single file from a digital signature file (.p7m) even recursively
