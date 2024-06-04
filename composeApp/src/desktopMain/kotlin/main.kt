@@ -12,7 +12,7 @@ fun main() {
 
     var locale = Settings().getLocale()
     if (locale == null) {
-        locale = "en"
+        locale = i18n4k.locale.toString()
         Settings().setLocale(locale)
     }
 

@@ -7,7 +7,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.*
 import de.comahe.i18n4k.i18n4k
 
-class NavbarViewModel() {
+class NavbarViewModel private constructor() {
+
+    companion object {
+        @Volatile
+        private var instance: NavbarViewModel? = null
+
+        fun getInstance(): NavbarViewModel {
+            return instance ?: synchronized(this) {
+                instance ?: NavbarViewModel().also { instance = it }
+            }
+        }
+    }
+
     var openedTab by mutableStateOf(0)
 }
 

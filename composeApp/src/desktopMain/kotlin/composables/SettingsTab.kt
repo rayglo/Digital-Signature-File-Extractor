@@ -21,12 +21,9 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 @Preview
 @Composable
 fun SettingsTab() {
-
-
-    var options = listOf(("en" to "\uD83C\uDDEC\uD83C\uDDE7 English"), ("it" to "\uD83C\uDDEE\uD83C\uDDF9 Italian"))
+    val options = listOf(("en" to "\uD83C\uDDEC\uD83C\uDDE7 English"), ("it" to "\uD83C\uDDEE\uD83C\uDDF9 Italian"))
+    val settings = Settings()
     var isLocaleDropdownOpen by remember { mutableStateOf(false) }
-    var selectedLocale by remember { mutableStateOf(i18n4k.locale.toString()) }
-    var settings = Settings()
 
     Column(
         verticalArrangement = Arrangement.spacedBy(36.dp),
@@ -58,7 +55,7 @@ fun SettingsTab() {
                 TextField(
                     modifier = Modifier.fillMaxWidth(),
                     readOnly = true,
-                    value = options.find { it.first == selectedLocale }?.second.orEmpty(),
+                    value = options.find { it.first == i18n4k.locale.toString() }?.second.orEmpty(),
                     onValueChange = {},
                     singleLine = true,
                     label = { Text(MyMessages.language.toString()) },
@@ -72,7 +69,6 @@ fun SettingsTab() {
                     options.forEach { (value, label) ->
                         DropdownMenuItem(
                             onClick = {
-                                selectedLocale = value
                                 isLocaleDropdownOpen = false
                                 settings.setLocale(value)
                                 i18n4k = I18n4kConfigDefault().apply {

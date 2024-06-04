@@ -10,7 +10,7 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 @Preview
 @Composable
 fun App() {
-    val viewModel = NavbarViewModel()
+    val viewModel = NavbarViewModel.getInstance()
 
     MaterialTheme {
 
