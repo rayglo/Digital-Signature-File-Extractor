@@ -1,11 +1,31 @@
-This is a Kotlin Multiplatform project targeting Desktop.
+# Digital Signature File Extractor
 
-* `/composeApp` is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - `commonMain` is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    `iosMain` would be the right folder for such calls.
+A really simple to use tool to extract files from a digital signature file.
 
+### Features
 
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+- Extract a single file from a digital signature file (.p7m) even recursively
+- Extract all the files in a folder from a digital signature file (.p7m) even recursively
+- Multilanguage support (English, Italian)
+- Cross-platform (Windows, Linux, MacOS)
+- Easy to use
+- Open source
+- Easily extensible
+
+### Usage
+
+##### Extract a single file from a digital signature file
+
+1. Select the digital signature file
+2. Select the output folder
+3. Click on the "Extract file" button
+
+##### Extract all the files in a folder from a digital signature file
+
+1. Select the digital signature file
+2. Select the output folder
+3. Click on the "Extract folder" button
+
+### Screenshots
+
+![Main window](/screenshots/1.jpg)
