@@ -80,4 +80,29 @@ class P7MExtractor() : Extractor() {
 
     }
 
+    override fun extractDirectory(source: File, destination: File?): List<File?> {
+        if(!source.exists() && !source.isDirectory) {
+            throw NotValidP7MFileNameException("The source folder does not exist or is not a folder")
+        }
+
+        val destinationPath = destination?.absolutePath ?: (source.parent + "/output")
+
+        if(destinationPath.endsWith("/")) {
+            destinationPath.dropLast(1)
+        }
+
+        val files = source.listFiles()?.filter{
+            it.extension == "p7m"
+        }
+
+        val result : MutableList<File?> = mutableListOf()
+
+        files?.forEach {
+            result.add(extract(it, File(destinationPath)))
+            extract(it, destination)
+        }
+
+        return result
+    }
+
 }

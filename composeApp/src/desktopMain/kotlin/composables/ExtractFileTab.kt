@@ -58,7 +58,7 @@ fun ExtractFileTab() {
                 modifier = Modifier.weight(7f),
                 value = selectedFilePath ?: "",
                 onValueChange = { selectedFilePath = it },
-                label = { Text("Selected file") },
+                label = { Text("Select a file") },
                 singleLine = true
             )
             Button(
@@ -94,7 +94,7 @@ fun ExtractFileTab() {
                 modifier = Modifier.weight(7f),
                 value = destinationFolderPath ?: "",
                 onValueChange = { destinationFolderPath = it },
-                label = { Text("Selected folder") },
+                label = { Text("Select a destination folder") },
                 singleLine = true
             )
             Button(
