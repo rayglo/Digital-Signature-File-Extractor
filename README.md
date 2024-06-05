@@ -1,6 +1,6 @@
 # Digital Signature File Extractor
 
-A really simple to use tool to extract files from a digital signature file.
+A really simple to use tool to extract files from a digitally signed file.
 
 ### Disclaimer
 
