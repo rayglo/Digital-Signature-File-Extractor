@@ -9,7 +9,6 @@ import de.comahe.i18n4k.i18n4k
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 
-@Preview
 @Composable
 fun App() {
     var openedTab by remember { mutableStateOf(0) }

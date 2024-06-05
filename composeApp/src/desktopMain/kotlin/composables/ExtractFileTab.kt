@@ -18,7 +18,6 @@ import extractor.P7MExtractor
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import java.io.File
 
-@Preview
 @Composable
 fun ExtractFileTab() {
     val p7mExtractor = P7MExtractor()

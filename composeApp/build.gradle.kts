@@ -42,9 +42,13 @@ compose.desktop {
         mainClass = "MainKt"
 
         nativeDistributions {
-            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "org.p7m_extractor"
-            packageVersion = "1.0.0"
+            packageName = "Digital Signature File Extractor"
+
+            modules("jdk.unsupported")
+
+            windows {
+                packageVersion = "0.1"
+            }
         }
     }
 }

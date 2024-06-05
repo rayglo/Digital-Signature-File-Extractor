@@ -1,4 +1,4 @@
-rootProject.name = "p7mExtractor"
+rootProject.name = "DigitalSignatureFileExtractor"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {

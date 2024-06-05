@@ -16,12 +16,10 @@ import de.comahe.i18n4k.Locale
 import de.comahe.i18n4k.config.I18n4kConfigDefault
 import de.comahe.i18n4k.i18n4k
 import org.jetbrains.compose.resources.painterResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
-import p7mextractor.composeapp.generated.resources.Res
-import p7mextractor.composeapp.generated.resources.github
+import digitalsignaturefileextractor.composeapp.generated.resources.Res
+import digitalsignaturefileextractor.composeapp.generated.resources.github
 
 @OptIn(ExperimentalMaterialApi::class)
-@Preview
 @Composable
 fun SettingsTab(onLocaleChange: (Locale) -> Unit = { _ -> }) {
     val options = listOf(("en" to "\uD83C\uDDEC\uD83C\uDDE7 English"), ("it" to "\uD83C\uDDEE\uD83C\uDDF9 Italian"))
